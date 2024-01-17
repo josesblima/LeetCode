@@ -18,7 +18,6 @@ class Solution:
             if numbers[left] + numbers[right] < target and left < len(numbers) - 1:
                 left += 1
                 continue
-            left += 1
         return [left + 1, right + 1]
     twoSum(1, [3,24,50,79,88,150,345], 200)
         
