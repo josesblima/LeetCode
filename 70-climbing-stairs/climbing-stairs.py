@@ -14,4 +14,3 @@ class Solution:
         return res[-1]
     climbStairs(1, 5)
 # @lc code=end
-
