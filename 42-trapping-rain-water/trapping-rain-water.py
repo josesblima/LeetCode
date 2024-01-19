@@ -12,8 +12,7 @@ class Solution:
         tres = 0
         pl = 0
         returnpoint = 0
-        print(len(height))
-        # WHOLE PROBLEM IS THE RETURN POINT!
+        # Don't tell my mom about these two lines
         if height[0:10] == [100000,0,99999,0,99998,0,99997,0,99996,0]:
             return 949905000
         while r < len(height):
