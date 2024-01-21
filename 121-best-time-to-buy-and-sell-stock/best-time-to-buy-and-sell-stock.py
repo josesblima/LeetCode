@@ -25,4 +25,3 @@ class Solution:
         return res
     maxProfit(1, [1,2,3,0,7])
 # @lc code=end
-
