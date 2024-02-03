@@ -8,11 +8,11 @@ class Solution:
             except:
                 if tokens[x] == '+':
                     new_num = stack[-2] + stack[-1]
-                if tokens[x] == '*':
+                elif tokens[x] == '*':
                     new_num = stack[-2] * stack[-1]
-                if tokens[x] == '-':
+                elif tokens[x] == '-':
                     new_num = stack[-2] - stack[-1]
-                if tokens[x] == '/':
+                elif tokens[x] == '/':
                     new_num = stack[-2] / stack[-1]   
                 stack[-2] = int(new_num)
                 stack.pop() 
