@@ -22,12 +22,10 @@ class Solution:
                 continue
             # If number decreased
             if len(stack) >= 1 and heights[x] < stack[-1][0]:
-                popcount = 0
                 # Pop all the last elems of stack until the last elem stops being higher than
                 # current elem and keep track of how many were popped to multiply them by new value
                 while len(stack) >= 1 and heights[x] < stack[-1][0]:
                     lastpop = stack.pop()
-                    popcount += 1
                 if len(stack) == 0:
                     stack.append([heights[x],  (x + 1 - lastpop[2]) * heights[x],lastpop[2]])
                     if stack[-1][1] > res:
@@ -51,5 +49,3 @@ class Solution:
                         res = stack[z][1]
             multiplier = 1
         return res
-    largestRectangleArea(1, 
-                         [7,4,5,9,0,1,1,8,3,1,6,8,8,8,8,0,7,7,8])
