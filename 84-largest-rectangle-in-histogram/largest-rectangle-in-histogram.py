@@ -5,12 +5,6 @@ class Solution:
         res = heights[0]
         multiplier = 1
         for x in range(1, len(heights)):
-            # Little hack for the alg to become more efficient when it faces consecutive equal numbers,
-            # instead of updating the stack, it just increases a multiplier that will be applied as soon
-            # as the next number is different (very bottom of the function)
-            if x + 1 < len(heights)and heights[x - 1] == heights[x] and heights[x] == heights[x + 1]:
-                multiplier += 1
-                continue
             # If number increased
             if len(stack) >= 1 and heights[x] > stack[-1][0]:
                 # for z in range(len(stack)):
@@ -55,14 +49,6 @@ class Solution:
             # If value is equal to last elem of stack 
             if len(stack) >= 1 and heights[x] == stack[-1][0]:
                 continue
-
-            # This is where it goes after a streak of repetitions
-            for z in range(len(stack)):
-                # Update stack values
-                    stack[z][1] += stack[z][0] * multiplier
-                    if stack[z][1] > res:
-                        res = stack[z][1]
-            multiplier = 1
         popcounter = 0
         while len(stack) > 0:
             popcounter += 1
