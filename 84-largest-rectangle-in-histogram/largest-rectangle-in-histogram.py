@@ -8,8 +8,6 @@ class Solution:
             if len(stack) >= 1 and heights[x] > stack[-1][0]:
                 # Append new value
                 stack.append([heights[x],heights[x],x])
-                if stack[-1][1] > res:
-                        res = stack[-1][1]
                 continue
             # If number decreased
             if len(stack) >= 1 and heights[x] < stack[-1][0]:
