@@ -13,11 +13,11 @@ class Solution:
                 continue
             # If number increased
             if len(stack) >= 1 and heights[x] > stack[-1][0]:
-                for z in range(len(stack)):
-                    # Update stack values
-                    stack[z][1] += stack[z][0]
-                    if stack[z][1] > res:
-                        res = stack[z][1]
+                # for z in range(len(stack)):
+                #     # Update stack values
+                #     stack[z][1] += stack[z][0]
+                #     if stack[z][1] > res:
+                #         res = stack[z][1]
                 # Append new value
                 stack.append([heights[x],heights[x],x])
                 if stack[-1][1] > res:
@@ -30,24 +30,32 @@ class Solution:
                 # to add the value of the new item
                 while len(stack) >= 1 and heights[x] < stack[-1][0]:
                     lastpop = stack.pop()
+                    #update result if the area of lastpop is higher
+                    if res < lastpop[1] * (x - lastpop[2]):
+                        res = lastpop[1] * (x - lastpop[2])
                 # If stack is empty just append
                 if len(stack) == 0:
-                    stack.append([heights[x],  (x + 1 - lastpop[2]) * heights[x],lastpop[2]])
+                    stack.append([heights[x], heights[x],lastpop[2]])
                     if stack[-1][1] > res:
                         res = stack[-1][1]
                     continue
                 # I stack is not empty, append and update the other elems
                 if heights[x] >= stack[-1][0]:
                     # Append and multiply total area by popcount
-                    stack.append([heights[x], (x + 1 - lastpop[2]) * heights[x],lastpop[2]])
+                    stack.append([heights[x], heights[x],lastpop[2]])
                     if stack[-1][1] > res:
                         res = stack[-1][1]
-                    for z in range(0,len(stack) - 1):
-                        # Update stack values
-                        stack[z][1] += stack[z][0]
-                        if stack[z][1] > res:
-                            res = stack[z][1]
                     continue
+                    # for z in range(0,len(stack) - 1):
+                    #     # Update stack values
+                    #     stack[z][1] += stack[z][0]
+                    #     if stack[z][1] > res:
+                    #         res = tack[z][1]
+                    # continue
+            # If value is equal to last elem of stack 
+            if len(stack) >= 1 and heights[x] == stack[-1][0]:
+                continue
+
             # This is where it goes after a streak of repetitions
             for z in range(len(stack)):
                 # Update stack values
@@ -55,6 +63,13 @@ class Solution:
                     if stack[z][1] > res:
                         res = stack[z][1]
             multiplier = 1
+        popcounter = 0
+        while len(stack) > 0:
+            popcounter += 1
+            lastpop = stack.pop()
+            #update result if the area of lastpop is higher
+            if res < lastpop[1] * (len(heights) - lastpop[2]):
+                res = lastpop[1] * (len(heights) - lastpop[2])
         return res
-    
+    largestRectangleArea(1, [1,1])
     
