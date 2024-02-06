@@ -3,15 +3,9 @@ class Solution:
                     # Height, total area, index
         stack = [   [heights[0], heights[0], 0]   ]
         res = heights[0]
-        multiplier = 1
         for x in range(1, len(heights)):
             # If number increased
             if len(stack) >= 1 and heights[x] > stack[-1][0]:
-                # for z in range(len(stack)):
-                #     # Update stack values
-                #     stack[z][1] += stack[z][0]
-                #     if stack[z][1] > res:
-                #         res = stack[z][1]
                 # Append new value
                 stack.append([heights[x],heights[x],x])
                 if stack[-1][1] > res:
@@ -40,15 +34,6 @@ class Solution:
                     if stack[-1][1] > res:
                         res = stack[-1][1]
                     continue
-                    # for z in range(0,len(stack) - 1):
-                    #     # Update stack values
-                    #     stack[z][1] += stack[z][0]
-                    #     if stack[z][1] > res:
-                    #         res = tack[z][1]
-                    # continue
-            # If value is equal to last elem of stack 
-            if len(stack) >= 1 and heights[x] == stack[-1][0]:
-                continue
         popcounter = 0
         while len(stack) > 0:
             popcounter += 1
@@ -57,5 +42,3 @@ class Solution:
             if res < lastpop[1] * (len(heights) - lastpop[2]):
                 res = lastpop[1] * (len(heights) - lastpop[2])
         return res
-    largestRectangleArea(1, [1,1])
-    
