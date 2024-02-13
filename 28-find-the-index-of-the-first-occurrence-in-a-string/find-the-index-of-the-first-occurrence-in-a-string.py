@@ -12,7 +12,6 @@ class Solution:
                     i += 1
                 else:
                     size = lps[size - 1]
-        print(lps)
         i = 0; n = 0     
         while i < len(haystack) and n < len(needle):
             if haystack[i] == needle[n]:
@@ -23,8 +22,6 @@ class Solution:
                 else:
                     n = lps[n - 1]
             if n == len(needle):
-                print(i - len(needle))
                 return i - len(needle)
-        print(-1)
         return -1
     strStr(1, haystack = "isissippi", needle = "issip")
