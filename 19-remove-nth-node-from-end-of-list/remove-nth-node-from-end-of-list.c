@@ -1,4 +1,3 @@
-
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 {
     int i;
